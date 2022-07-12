@@ -103,7 +103,7 @@ class TinyImageNet(ImageFolder):
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
 
-    def __init__(self, root: Path, split: str = "train") -> None:
+    def __init__(self, root: Path, split: str = "train",transform=None, target_transform=None) -> None:
         if isinstance(root,str):
             root = Path(root)
         assert split in ["train","val","test"]
@@ -112,7 +112,7 @@ class TinyImageNet(ImageFolder):
         if not images_root.exists():
             download_resources(root,mirrors,resources)        
         preprocess_val(images_root)
-        super().__init__(images_root/split)
+        super().__init__(images_root/split,transform=transform,target_transform=target_transform)
         self.idx_to_words,self.idx_to_class = self.load_words_classes(images_root)
     
     def load_words_classes(self,root:Path):
@@ -131,16 +131,21 @@ class TinyImageNet(ImageFolder):
 
 
 if __name__ == '__main__':
-    
+    from torchvision import transforms
+
     logging.basicConfig(level=logging.INFO)
-    
+    transform = transforms.Compose(
+        [transforms.ToTensor(),
+        transforms.Normalize(TinyImageNet.mean,TinyImageNet.std)]
+        )
+
     split ="val"
-    dataset = TinyImageNet(Path("~/.torchvision/tinyimagenet/"),split=split)
+    dataset = TinyImageNet(Path("~/.torchvision/tinyimagenet/"),split=split,transform=transform)
     n = len(dataset)
     print(f"TinyImageNet, split {split}, has  {n} samples.")
     print("Showing some samples")
     for i in range(0,n,n//5):
         image,klass = dataset[i]
-        print(f"Sample of class {klass:3d}, image {image}, words {dataset.idx_to_words[klass]}")
+        print(f"Sample of class {klass:3d}, image shape {image.shape}, words {dataset.idx_to_words[klass]}")
 
 

@@ -12,8 +12,8 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
-url="https://github.com/facundoq/torchvision-tinyimagenet"
-VERSION="0.2"
+url="https://github.com/facundoq/tinyimagenet"
+VERSION="0.1"
 
 class UploadCommand(Command):
     """Support setup.py upload."""
@@ -53,7 +53,7 @@ class UploadCommand(Command):
 
 
 setup(
-    name="torchvision-tinyimagenet",
+    name="tinyimagenet",
     version=VERSION,
     python_requires='>=3.6',
     packages=find_packages(),
@@ -77,7 +77,7 @@ setup(
     # metadata to display on PyPI
     author="Facundo Manuel Quiroga",
     author_email="facundoq@gmail.com",
-    description="Dataset class for PyTorch and the TinyImageNet dataset.",
+    description="Dataset class for PyTorch and the TinyImageNet dataset, with automated download and extraction.",
     keywords="TinyImageNet ImageNet Dataset PyTorch torch torchvision",
     url=url,   # project home page, if any
     project_urls={
