@@ -131,6 +131,7 @@ class TinyImageNet(ImageFolder):
 
 
 if __name__ == '__main__':
+    
     logging.basicConfig(level=logging.INFO)
     
     split ="val"
