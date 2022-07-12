@@ -65,6 +65,7 @@ setup(
         "torchvision",
 
     ],
+    py_modules=['tinyimagenet'],
 
     package_data={
         # If any package contains *.txt or *.rst files, include them:

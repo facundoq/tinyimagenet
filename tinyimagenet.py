@@ -142,6 +142,4 @@ if __name__ == '__main__':
         image,klass = dataset[i]
         print(f"Sample of class {klass:3d}, image {image}, words {dataset.idx_to_words[klass]}")
 
-    from torchvision import transforms
-    norm = transforms.Normalize(mean=TinyImageNet.mean, std=TinyImageNet.std)
 
