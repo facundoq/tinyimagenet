@@ -1,11 +1,13 @@
 # torchvision-tinyimagenet
 Dataset class for PyTorch and the TinyImageNet dataset.
 
+# Installation
+
+``` pip install tinyimagenet ```
 
 # How to use
 ````
 from tinyimagenet import TinyImageNet
-import logging
 from pathlib import Path
 
 logging.basicConfig(level=logging.INFO)
@@ -20,3 +22,5 @@ for i in range(0,n,n//n_samples):
     image,klass = dataset[i]
     print(f"Sample of class {klass:3d}, image {image}, words {dataset.idx_to_words[klass]}")
 ````
+
+You can also check the [quickstart notebook](https://colab.research.google.com/drive/1FCDsDJg86mCjyeAWOxDW9iF49goWCx4j?usp=sharing)
