@@ -1002,6 +1002,4 @@ ids = [
 ]
 idx = list(range(len(ids)))
 pairs = zip(ids,idx)
-
 class_to_idx = dict(pairs)
-print(class_to_idx)

@@ -1,1 +1,4 @@
 torchvision
+twine
+setuptools
+wheel

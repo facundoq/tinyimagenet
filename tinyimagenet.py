@@ -99,11 +99,20 @@ def preprocess_val(root:Path):
         images_root.rmdir()
 
 
+
+    
+
 class TinyImageNet(ImageFolder):
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
+    
+    def target_transform_imagenet_idx(self,tinyimagenet_idx):
+        print(tinyimagenet_idx)
+        klass = self.idx_to_class[tinyimagenet_idx]
+        imagenet_idx = imagenet1k.class_to_idx[klass]
+        return imagenet_idx
 
-    def __init__(self, root: Path, split: str = "train",transform=None, target_transform=None) -> None:
+    def __init__(self, root: Path, split: str = "train",transform=None, target_transform=None,imagenet_idx=False) -> None:
         if isinstance(root,str):
             root = Path(root)
         self.class_to_imagenet_idx = imagenet1k.class_to_idx 
@@ -113,6 +122,11 @@ class TinyImageNet(ImageFolder):
         if not images_root.exists():
             download_resources(root,mirrors,resources)        
         preprocess_val(images_root)
+        if target_transform is None:
+            target_transform = lambda x: x
+        if imagenet_idx:
+            target_transform = lambda x: target_transform(self.target_transform_imagenet_idx(x))
+
         super().__init__(images_root/split,transform=transform,target_transform=target_transform)
         self.idx_to_words,self.idx_to_class = self.load_words_classes(images_root)
     

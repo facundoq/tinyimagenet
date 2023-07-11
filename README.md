@@ -9,6 +9,7 @@ Dataset class for PyTorch and the TinyImageNet dataset.
 ````
 from tinyimagenet import TinyImageNet
 from pathlib import Path
+import logging
 
 logging.basicConfig(level=logging.INFO)
 
