@@ -10,7 +10,7 @@ from torchvision.datasets import ImageFolder
 from torchvision.datasets.utils import check_integrity, extract_archive, verify_str_arg,download_and_extract_archive
 import logging
 
-
+import imagenet1k
 
 mirrors = [
     "http://cs231n.stanford.edu/",
@@ -106,6 +106,7 @@ class TinyImageNet(ImageFolder):
     def __init__(self, root: Path, split: str = "train",transform=None, target_transform=None) -> None:
         if isinstance(root,str):
             root = Path(root)
+        self.class_to_imagenet_idx = imagenet1k.class_to_idx 
         assert split in ["train","val","test"]
         root = root.expanduser()
         images_root = root/"tiny-imagenet-200/"
