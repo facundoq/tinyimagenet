@@ -13,7 +13,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 url="https://github.com/facundoq/tinyimagenet"
-VERSION="0.5"
+VERSION="0.6"
 
 class UploadCommand(Command):
     """Support setup.py upload."""
@@ -65,11 +65,11 @@ setup(
         "torchvision",
 
     ],
-    py_modules=['tinyimagenet'],
+    py_modules=['tinyimagenet',"imagenet1k"],
 
     package_data={
         # If any package contains *.txt or *.rst files, include them:
-        "": ["*.txt", "*.rst"],
+        "": ["*.txt", "*.rst","*.csv"],
         # And include any *.msg files found in the "hello" package, too:
         "hello": ["*.msg"],
     },
