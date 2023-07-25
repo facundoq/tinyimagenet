@@ -125,9 +125,10 @@ class TinyImageNet(ImageFolder):
         if target_transform is None:
             target_transform = lambda x: x
         if imagenet_idx:
-            target_transform = lambda x: target_transform(self.target_transform_imagenet_idx(x))
-
-        super().__init__(images_root/split,transform=transform,target_transform=target_transform)
+            new_target_transform = lambda x: target_transform(self.target_transform_imagenet_idx(x))
+        else:
+            new_target_transform=target_transform
+        super().__init__(images_root/split,transform=transform,target_transform=new_target_transform)
         self.idx_to_words,self.idx_to_class = self.load_words_classes(images_root)
     
     def load_words_classes(self,root:Path):
