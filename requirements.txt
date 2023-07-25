@@ -2,3 +2,4 @@ torchvision
 twine
 setuptools
 wheel
+tqdm
