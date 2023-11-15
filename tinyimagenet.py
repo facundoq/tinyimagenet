@@ -7,6 +7,7 @@ from typing import List, Tuple
 from urllib.error import URLError
 
 from torchvision.datasets import ImageFolder
+from torchvision.transforms import ToTensor
 from torchvision.datasets.utils import check_integrity, extract_archive, verify_str_arg,download_and_extract_archive
 import logging
 
@@ -107,7 +108,6 @@ class TinyImageNet(ImageFolder):
     std = [0.229, 0.224, 0.225]
     
     def target_transform_imagenet_idx(self,tinyimagenet_idx):
-        print(tinyimagenet_idx)
         klass = self.idx_to_class[tinyimagenet_idx]
         imagenet_idx = imagenet1k.class_to_idx[klass]
         return imagenet_idx
@@ -123,7 +123,7 @@ class TinyImageNet(ImageFolder):
             download_resources(root,mirrors,resources)        
         preprocess_val(images_root)
         if target_transform is None:
-            target_transform = lambda x: x
+            target_transform = lambda x: ToTensor(x)
         if imagenet_idx:
             new_target_transform = lambda x: target_transform(self.target_transform_imagenet_idx(x))
         else:
@@ -146,22 +146,6 @@ class TinyImageNet(ImageFolder):
         return words,classes
 
 
-if __name__ == '__main__':
-    from torchvision import transforms
 
-    logging.basicConfig(level=logging.INFO)
-    transform = transforms.Compose(
-        [transforms.ToTensor(),
-        transforms.Normalize(TinyImageNet.mean,TinyImageNet.std)]
-        )
-
-    split ="val"
-    dataset = TinyImageNet(Path("~/.torchvision/tinyimagenet/"),split=split,transform=transform)
-    n = len(dataset)
-    print(f"TinyImageNet, split {split}, has  {n} samples.")
-    print("Showing some samples")
-    for i in range(0,n,n//5):
-        image,klass = dataset[i]
-        print(f"Sample of class {klass:3d}, image shape {image.shape}, words {dataset.idx_to_words[klass]}")
 
 
