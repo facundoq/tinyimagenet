@@ -25,3 +25,12 @@ for i in range(0,n,n//n_samples):
 ````
 
 You can also check the [quickstart notebook](https://colab.research.google.com/drive/1FCDsDJg86mCjyeAWOxDW9iF49goWCx4j?usp=sharing)
+
+You can also check the following quickstart notebooks that use TinyImageNet with PyTorch models:
+
+* [Evaluate a pretrained EfficientNet model](https://colab.research.google.com/github/facundoq/tinyimagenet/blob/main/Eval%20EfficientNet%20with%20TinyImageNet.ipynb#scrollTo=41aVk-yvEV-o)
+* [Train a simple CNN on the dataset](
+https://colab.research.google.com/github/facundoq/tinyimagenet/blob/main/Train%20basic%20CNN%20with%20TinyImageNet.ipynb#scrollTo=4CiA6z8reXYP)
+* [Finetune an EfficientNet model pretrained on the full ImageNet to classify only the 200 classes of TinyImageNet](https://colab.research.google.com/github/facundoq/tinyimagenet/blob/main/Finetune%20EfficientNet%20with%20TinyImageNet.ipynb)
+
+
