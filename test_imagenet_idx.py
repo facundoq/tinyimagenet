@@ -14,6 +14,6 @@ if __name__ == "__main__":
         print(dataset.class_to_idx)
         n = len(dataset)
         print(f"TinyImageNet, split {split}, has  {n} samples. Loading all samples with imagenet_idx:")
-
+        
         for i in tqdm(range(0,n)):
             image,klass = dataset[i]

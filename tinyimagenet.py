@@ -123,11 +123,13 @@ class TinyImageNet(ImageFolder):
             download_resources(root,mirrors,resources)        
         preprocess_val(images_root)
         if target_transform is None:
-            target_transform = lambda x: ToTensor(x)
+            target_transform = lambda x: x
         if imagenet_idx:
             new_target_transform = lambda x: target_transform(self.target_transform_imagenet_idx(x))
         else:
             new_target_transform=target_transform
+        if transform is None:
+            transform = ToTensor()
         super().__init__(images_root/split,transform=transform,target_transform=new_target_transform)
         self.idx_to_words,self.idx_to_class = self.load_words_classes(images_root)
     
