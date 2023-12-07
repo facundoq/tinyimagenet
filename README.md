@@ -24,9 +24,9 @@ for i in range(0,n,n//n_samples):
     print(f"Sample of class {klass:3d}, image {image}, words {dataset.idx_to_words[klass]}")
 ````
 
-You can also check the [quickstart notebook](https://colab.research.google.com/drive/1FCDsDJg86mCjyeAWOxDW9iF49goWCx4j?usp=sharing)
+You can also check the [quickstart notebook](https://colab.research.google.com/drive/1FCDsDJg86mCjyeAWOxDW9iF49goWCx4j?usp=sharing) to peruse the dataset.
 
-You can also check the following quickstart notebooks that use TinyImageNet with PyTorch models:
+Finally, we also provide some example notebooks that use TinyImageNet with PyTorch models:
 
 * [Evaluate a pretrained EfficientNet model](https://colab.research.google.com/github/facundoq/tinyimagenet/blob/main/Eval%20EfficientNet%20with%20TinyImageNet.ipynb#scrollTo=41aVk-yvEV-o)
 * [Train a simple CNN on the dataset](
