@@ -35,9 +35,6 @@ for split in splits:
             
             imagenet_klass = dataset.class_to_imagenet_idx[id]
 
-        # print(f"Sample of class {klass:3d} (imagenet {imagenet_klass}), image {image}, words {dataset.idx_to_words[klass]}")
-        
-
 
 
 
