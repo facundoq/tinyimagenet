@@ -63,7 +63,6 @@ setup(
     # installed or upgraded on the target machine
     install_requires=[
         "torchvision",
-
     ],
     py_modules=['tinyimagenet',"imagenet1k"],
 
