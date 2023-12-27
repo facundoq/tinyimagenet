@@ -14,7 +14,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 split ="val"
-dataset = TinyImageNet(Path("~/.torchvision/tinyimagenet/"),split=split)
+dataset = TinyImageNet(Path("~/.torchvision/tinyimagenet/"),split=split,imagenet_idx=False)
 n = len(dataset)
 print(f"TinyImageNet, split {split}, has  {n} samples.")
 n_samples = 5
@@ -23,6 +23,8 @@ for i in range(0,n,n//n_samples):
     image,klass = dataset[i]
     print(f"Sample of class {klass:3d}, image {image}, words {dataset.idx_to_words[klass]}")
 ````
+
+The `imagenet_idx` indicates if the dataset's labels correspond to those in the full ImageNet dataset. By default (`imagenet_idx=False`) the labels are renumbered sequentially so that the 200 classes are named 0, 1, 2, ..., 199. 
 
 You can also check the [quickstart notebook](https://colab.research.google.com/drive/1FCDsDJg86mCjyeAWOxDW9iF49goWCx4j?usp=sharing) to peruse the dataset.
 

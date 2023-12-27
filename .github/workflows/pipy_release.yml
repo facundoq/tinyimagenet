@@ -4,7 +4,6 @@ on:
   push:
     tags:
      - '*'
-
 jobs:
   build:
     name: Build 📦 publish Python 🐍 distributions 📦 to PyPI
@@ -24,12 +23,13 @@ jobs:
       run: >-
         python -m
         pip install wheel setuptools
-    - name: Extract tag name
+    - name: Extract tag name to use as version
       id: tag
       run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
     - name: Update version in setup.py
       run: >-
-        sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" setup.py
+        sed -i "/VERSION=/c\VERSION='${{ steps.tag.outputs.TAG_NAME }}'"
+        setup.py
     - name: Build a binary wheel
       run: >-
         python setup.py sdist bdist_wheel --universal

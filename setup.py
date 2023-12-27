@@ -13,7 +13,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 url="https://github.com/facundoq/tinyimagenet"
-VERSION="{{VERSION_PLACEHOLDER}}"
+VERSION="0.9.10"
 
 class UploadCommand(Command):
     """Support setup.py upload."""
